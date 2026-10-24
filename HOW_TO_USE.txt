@@ -1,0 +1,48 @@
+============================================================
+  NISHKA'S BIRTHDAY WEBSITE (31 OCTOBER) ❤️
+============================================================
+
+Yeh folder aapka complete birthday website project hai!
+Isme saari files settle karke organize kar di gayi hain.
+
+------------------------------------------------------------
+1. APNE COMPUTER PAR WEBSITE KAISE RUN KAREIN?
+------------------------------------------------------------
+Simple! Bas is folder me jo "START_WEBSITE.bat" file hai,
+uspar double click kar dijiye.
+Yeh automatic server start karke aapke browser me
+http://localhost:5173 open kar dega.
+
+------------------------------------------------------------
+2. GITHUB PAR UPLOAD AUR ONLINE DEPLOY KAISE KAREIN?
+------------------------------------------------------------
+Production build banane ke liye project folder ke terminal me:
+   npm install
+   npm run build
+Ready-to-deploy output "dist" folder me banega.
+
+GitHub Pages par automatic deployment ke liye:
+1. Existing repository me project upload karne ke exact PowerShell commands
+   README.md ke "Deploying the website" section me hain. .github folder bhi
+   upload hona chahiye; node_modules aur dist ko upload na karein.
+2. GitHub repository me Settings > Pages kholen.
+3. Build and deployment > Source me "GitHub Actions" chunein.
+4. Actions tab me "Deploy to GitHub Pages" workflow successful hone ka
+   intezar karein. Live URL Settings > Pages me milega.
+
+------------------------------------------------------------
+3. FOLDER STRUCTURE AUR KAHAN KYA HAI?
+------------------------------------------------------------
+- START_WEBSITE.bat      -> Double-click to start website
+- dist/                  -> npm run build se generate hone wala output
+- public/images/us/      -> Aap dono ke saath wale photos
+- public/images/nishka/  -> Nishka ke solo photos
+- src/content/           -> Saare letters, notes, memories aur config:
+    * letterContent.ts   -> Birthday Letter (Melody, 17 Sep kiss, etc.)
+    * memories.ts        -> Timeline milestones (28 Aug, 5 Sep, 17 Sep, 23 Oct)
+    * notes.ts           -> 6 Special folded notes
+    * proposalContent.ts -> Romantic confession & "Will you be my girlfriend?"
+    * surpriseContent.ts -> Gift box unwrapping surprise letter
+    * photoManifest.ts   -> Photos ke captions aur details
+
+============================================================

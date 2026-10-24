@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A special birthday experience created just for Nishka — with love, memories, and a little surprise." />
+    <title>Happy Birthday, Nishka ❤️</title>
+    <!-- Google Fonts: Plus Jakarta Sans & Outfit for crystal clear readability -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+
+    <!-- ========== OPENING SCENE ========== -->
+    <section id="opening" class="scene scene--opening" aria-label="Opening screen">
+      <div class="stars-canvas" id="opening-stars" aria-hidden="true"></div>
+      <div class="opening__content">
+        <p class="opening__sub fade-in-delay-1">A little world,</p>
+        <h1 class="opening__name fade-in-delay-2">Nishka</h1>
+        <p class="opening__tagline fade-in-delay-3">made just for you.</p>
+        <div class="opening__divider fade-in-delay-4" aria-hidden="true">✦ ✦ ✦</div>
+        <p class="opening__message fade-in-delay-4">Something special has been waiting for you.</p>
+        <button class="btn btn--enter fade-in-delay-5" id="btn-enter" aria-label="Enter the experience">
+          <span>Enter</span>
+          <span class="btn--enter__arrow" aria-hidden="true">↓</span>
+        </button>
+      </div>
+      <div class="scroll-indicator fade-in-delay-5" aria-hidden="true">
+        <div class="scroll-indicator__dot"></div>
+      </div>
+    </section>
+
+    <!-- ========== MAIN APP (hidden until enter) ========== -->
+    <div id="main-app" class="main-app hidden" aria-hidden="true">
+
+      <!-- NAVIGATION -->
+      <nav class="site-nav" id="site-nav" role="navigation" aria-label="Site navigation">
+        <div class="site-nav__brand">N</div>
+        <button class="site-nav__toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="site-nav__links" id="nav-links" role="list">
+          <li><a href="#countdown" class="nav-link">Countdown</a></li>
+          <li><a href="#gallery-us" class="nav-link">Our Photos</a></li>
+          <li><a href="#gallery-nishka" class="nav-link">Her Gallery</a></li>
+          <li><a href="#timeline" class="nav-link">Memories</a></li>
+          <li><a href="#notes" class="nav-link">Notes</a></li>
+          <li><a href="#letter" class="nav-link">The Letter</a></li>
+          <li><a href="#surprise" class="nav-link">Surprise</a></li>
+        </ul>
+      </nav>
+
+      <!-- MUSIC PLAYER -->
+      <div class="music-player" id="music-player" role="region" aria-label="Music player">
+        <button class="music-player__btn" id="music-toggle" aria-label="Play background music" aria-pressed="false">
+          <span class="music-icon" id="music-icon" aria-hidden="true">♪</span>
+        </button>
+        <div class="music-player__bars" id="music-bars" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <audio id="bg-audio" loop preload="none" aria-hidden="true">
+          <source src="%BASE_URL%audio/background.mp3" type="audio/mpeg" />
+        </audio>
+      </div>
+
+      <!-- ========== COUNTDOWN SECTION ========== -->
+      <section id="countdown" class="scene scene--countdown" aria-label="Birthday countdown">
+        <div class="stars-canvas" id="countdown-stars" aria-hidden="true"></div>
+        <div class="countdown__moon" aria-hidden="true">
+          <div class="moon-glow"></div>
+          <div class="moon-body">🌙</div>
+        </div>
+        <div class="countdown__content">
+          <p class="countdown__label">Counting down to</p>
+          <h2 class="countdown__title">Nishka's Birthday</h2>
+          <p class="countdown__subtitle">31 October 2026</p>
+          <div class="countdown__timer" id="countdown-timer" role="timer" aria-live="polite" aria-label="Time remaining until birthday">
+            <div class="countdown__unit">
+              <span class="countdown__number" id="cd-days">--</span>
+              <span class="countdown__unit-label">Days</span>
+            </div>
+            <div class="countdown__sep" aria-hidden="true">:</div>
+            <div class="countdown__unit">
+              <span class="countdown__number" id="cd-hours">--</span>
+              <span class="countdown__unit-label">Hours</span>
+            </div>
+            <div class="countdown__sep" aria-hidden="true">:</div>
+            <div class="countdown__unit">
+              <span class="countdown__number" id="cd-minutes">--</span>
+              <span class="countdown__unit-label">Minutes</span>
+            </div>
+            <div class="countdown__sep" aria-hidden="true">:</div>
+            <div class="countdown__unit">
+              <span class="countdown__number" id="cd-seconds">--</span>
+              <span class="countdown__unit-label">Seconds</span>
+            </div>
+          </div>
+          <p class="countdown__message" id="countdown-message">Every second brings us closer to your special day.</p>
+
+          <!-- Birthday state (hidden until midnight) -->
+          <div class="birthday-reveal hidden" id="birthday-reveal">
+            <div class="birthday-reveal__burst" aria-hidden="true"></div>
+            <h2 class="birthday-reveal__headline">Happy Birthday, Nishka! ❤️</h2>
+            <p class="birthday-reveal__message">Today is your day — and this little world was made just for you.</p>
+            <button class="btn btn--primary" id="btn-open-letter-hero" aria-label="Open the birthday letter">
+              Open Your Letter
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== WELCOME SECTION ========== -->
+      <section id="welcome" class="scene scene--welcome" aria-label="Welcome">
+        <div class="welcome__content reveal-on-scroll">
+          <div class="section-ornament" aria-hidden="true">✦</div>
+          <h2 class="section-title">Welcome to Your<br /><em>Special Space</em></h2>
+          <p class="welcome__body">
+            This little website exists for one person: you. Scroll through whenever you're ready.
+            There are photographs, memories, notes, and — when midnight arrives on 31 October — a letter waiting for you.
+          </p>
+          <div class="welcome__arrow" aria-hidden="true">↓</div>
+        </div>
+      </section>
+
+      <!-- ========== OUR PHOTO GALLERY ========== -->
+      <section id="gallery-us" class="scene scene--gallery" aria-label="Our photo gallery">
+        <div class="gallery__header reveal-on-scroll">
+          <div class="section-ornament" aria-hidden="true">✦</div>
+          <h2 class="section-title">Our Little Collection<br /><em>of Memories</em></h2>
+          <p class="section-sub">Little moments, big memories.</p>
+        </div>
+        <div class="photo-grid photo-grid--us reveal-on-scroll" id="gallery-us-grid" role="list" aria-label="Photos of us together"></div>
+        <!-- Photos injected by JS from photoManifest.ts -->
+      </section>
+
+      <!-- ========== NISHKA SOLO GALLERY ========== -->
+      <section id="gallery-nishka" class="scene scene--gallery scene--gallery-nishka" aria-label="Nishka's photo gallery">
+        <div class="gallery__header reveal-on-scroll">
+          <div class="section-ornament" aria-hidden="true">✦</div>
+          <h2 class="section-title">A Little Gallery<br /><em>of You</em></h2>
+          <p class="section-sub">Through my favourite lens.</p>
+        </div>
+        <div class="photo-grid photo-grid--nishka reveal-on-scroll" id="gallery-nishka-grid" role="list" aria-label="Photos of Nishka"></div>
+      </section>
+
+      <!-- ========== MEMORY TIMELINE ========== -->
+      <section id="timeline" class="scene scene--timeline" aria-label="Memory timeline">
+        <div class="timeline__header reveal-on-scroll">
+          <div class="section-ornament" aria-hidden="true">✦</div>
+          <h2 class="section-title">Our Story<br /><em>So Far</em></h2>
+          <p class="section-sub">A journal of the moments I'll always remember.</p>
+        </div>
+        <div class="timeline" id="timeline-list" role="list" aria-label="Timeline of memories"></div>
+      </section>
+
+      <!-- ========== PERSONAL NOTES ========== -->
+      <section id="notes" class="scene scene--notes" aria-label="Personal notes">
+        <div class="notes__header reveal-on-scroll">
+          <div class="section-ornament" aria-hidden="true">✦</div>
+          <h2 class="section-title">A Few Little<br /><em>Things for You</em></h2>
+          <p class="section-sub">Small thoughts, folded with care.</p>
+        </div>
+        <div class="notes-grid reveal-on-scroll" id="notes-grid" role="list" aria-label="Personal notes"></div>
+      </section>
+
+      <!-- ========== THE LOCKED ENVELOPE & LETTER ========== -->
+      <section id="letter" class="scene scene--letter" aria-label="The birthday letter">
+        <div class="letter-section__header reveal-on-scroll">
+          <div class="section-ornament" aria-hidden="true">✦</div>
+          <h2 class="section-title">A Letter,<br /><em>Written Just for You</em></h2>
+        </div>
+
+        <!-- Envelope Component -->
+        <div class="envelope-wrapper reveal-on-scroll" id="envelope-wrapper">
+          <div class="envelope" id="envelope" aria-label="Sealed birthday letter envelope" role="button" tabindex="0">
+            <div class="envelope__back">
+              <div class="envelope__flap-back"></div>
+            </div>
+            <div class="envelope__body">
+              <div class="envelope__letter-peek" id="letter-peek" aria-hidden="true">
+                <div class="letter-peek__top"></div>
+              </div>
+            </div>
+            <div class="envelope__flap" id="envelope-flap" aria-hidden="true">
+              <div class="envelope__flap-inner"></div>
+            </div>
+            <div class="envelope__seal" id="envelope-seal" aria-hidden="true">
+              <div class="seal__ring">
+                <span class="seal__letter">N</span>
+              </div>
+            </div>
+          </div>
+          <div class="envelope__caption">
+            <p class="envelope__caption-text" id="envelope-caption">Some words are worth waiting for.</p>
+            <p class="envelope__locked-msg" id="envelope-locked-msg">Open when the clock strikes midnight on 31 October.</p>
+            <button class="btn btn--ghost envelope__open-btn hidden" id="btn-open-envelope" aria-label="Open the birthday letter">
+              Open the Letter
+            </button>
+          </div>
+        </div>
+
+        <!-- Full Birthday Letter (hidden until unlock) -->
+        <div class="birthday-letter hidden" id="birthday-letter" role="article" aria-label="Birthday letter">
+          <div class="birthday-letter__paper">
+            <div class="letter__date" id="letter-date"></div>
+            <div class="letter__salutation" id="letter-salutation"></div>
+            <div class="letter__body" id="letter-body"></div>
+            <div class="letter__signature" id="letter-signature"></div>
+          </div>
+
+          <!-- PROPOSAL SECTION (at end of letter) -->
+          <div class="proposal" id="proposal" aria-label="Special message">
+            <div class="proposal__divider" aria-hidden="true">
+              <span>✦ ✦ ✦</span>
+            </div>
+            <p class="proposal__prelude">There's one more thing<br />I want to tell you...</p>
+            <div class="proposal__confession" id="proposal-confession"></div>
+            <div class="proposal__question-wrapper">
+              <div class="proposal__hearts" aria-hidden="true" id="proposal-hearts"></div>
+              <p class="proposal__question" id="proposal-question"></p>
+            </div>
+            <div class="proposal__buttons">
+              <button class="btn btn--yes" id="btn-yes" aria-label="Yes, I would like to be your girlfriend">
+                Yes ❤️
+              </button>
+              <button class="btn btn--maybe" id="btn-maybe" aria-label="I need some time to think">
+                I need some time 💌
+              </button>
+            </div>
+            <div class="proposal__response hidden" id="proposal-response" role="alert" aria-live="polite"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== SECRET SURPRISE ========== -->
+      <section id="surprise" class="scene scene--surprise" aria-label="Secret birthday surprise">
+        <div class="surprise__header reveal-on-scroll">
+          <div class="section-ornament" aria-hidden="true">✦</div>
+          <h2 class="section-title">One More<br /><em>Little Surprise</em></h2>
+          <p class="section-sub">There's one more little surprise waiting for you.</p>
+        </div>
+        <div class="surprise__box-wrapper reveal-on-scroll">
+          <div class="surprise-box" id="surprise-box" role="button" tabindex="0" aria-label="Click to reveal your surprise" aria-expanded="false">
+            <div class="surprise-box__lid" id="surprise-lid" aria-hidden="true">
+              <div class="surprise-box__ribbon-v" aria-hidden="true"></div>
+              <div class="surprise-box__ribbon-h" aria-hidden="true"></div>
+              <div class="surprise-box__bow" aria-hidden="true">🎀</div>
+            </div>
+            <div class="surprise-box__body" aria-hidden="true">
+              <div class="surprise-box__stripes" aria-hidden="true"></div>
+            </div>
+            <p class="surprise-box__hint">Tap to open</p>
+          </div>
+          <div class="surprise__content hidden" id="surprise-content" role="region" aria-label="Surprise content">
+            <div class="surprise__message" id="surprise-message"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== CLOSING SCENE ========== -->
+      <section id="closing" class="scene scene--closing" aria-label="Closing">
+        <div class="stars-canvas" id="closing-stars" aria-hidden="true"></div>
+        <div class="closing__content reveal-on-scroll">
+          <div class="section-ornament" aria-hidden="true">✦</div>
+          <h2 class="closing__title">Happy Birthday,<br /><em>Nishka</em></h2>
+          <p class="closing__message" id="closing-message"></p>
+          <div class="closing__signature" id="closing-signature"></div>
+          <div class="closing__hearts" aria-hidden="true" id="closing-hearts"></div>
+        </div>
+      </section>
+
+    </div><!-- /#main-app -->
+
+    <!-- ========== LIGHTBOX ========== -->
+    <div class="lightbox hidden" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+      <button class="lightbox__close" id="lightbox-close" aria-label="Close photo viewer">✕</button>
+      <button class="lightbox__nav lightbox__nav--prev" id="lightbox-prev" aria-label="Previous photo">‹</button>
+      <button class="lightbox__nav lightbox__nav--next" id="lightbox-next" aria-label="Next photo">›</button>
+      <div class="lightbox__content">
+        <img class="lightbox__img" id="lightbox-img" src="" alt="" />
+        <div class="lightbox__info">
+          <p class="lightbox__caption" id="lightbox-caption"></p>
+          <p class="lightbox__date" id="lightbox-date"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== CONFETTI CANVAS ========== -->
+    <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
